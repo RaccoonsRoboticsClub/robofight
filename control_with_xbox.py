@@ -25,6 +25,7 @@ while True:
     rt_pressed = rt > 0
     rb_pressed = Button.RB in pressed_buttons
     lb_pressed = Button.LB in pressed_buttons
+    menu_pressed = Button.MENU in pressed_buttons
 
     right = y - x / 3
     left = y + x / 3
@@ -47,5 +48,10 @@ while True:
         motor_C.run(-MAX_SPEED)
     else:
         motor_C.stop()
+
+    if menu_pressed:
+        hub.speaker.beep()
+        print("Goodbye!")
+        break        
 
     wait(20)
